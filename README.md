@@ -1,2 +1,2 @@
-# 7-CS-bigData
-Little big data project
+# 7-SC-boards
+Year 7 Breadboard module

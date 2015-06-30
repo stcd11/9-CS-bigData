@@ -1,0 +1,131 @@
+#+STARTUP:indent
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+#+HTML_HEAD_EXTRA: <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu' rel='stylesheet' type='text/css'>
+#+HTML_HEAD_EXTRA: <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+#+HTML_HEAD_EXTRA: <script src="js/navbar.js" type="text/javascript"></script>
+#+OPTIONS: f:nil author:nil num:1 creator:nil timestamp:nil toc:nil html-style:nil
+
+#+TITLE: An introduction to Breadboards
+#+AUTHOR: Stephen Brown
+
+#+BEGIN_HTML
+  <div class="github-fork-ribbon-wrapper left">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/stsb11/7-SC-boards">Fork me on GitHub</a>
+    </div>
+  </div>
+<div id="stickyribbon">
+    <ul>
+      <li><a href="1_Lesson.html">Week1</a></li>
+      <li><a href="2_Lesson.html">Week2</a></li>
+      <li><a href="3_Lesson.html">Week3</a></li>
+      <li><a href="4_Lesson.html">Week4</a></li>
+    </ul>
+  </div>
+#+END_HTML
+* COMMENT Use as a template
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END:
+** Learn It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: learn
+:END:
+
+** Research It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: research
+:END:
+
+** Design It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: design
+:END:
+
+** Build It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: build
+:END:
+
+** Test It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: test
+:END:
+
+** Run It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: run
+:END:
+
+** Document It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: document
+:END:
+
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+
+** Program It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: program
+:END:
+
+** Try It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: try
+:END:
+
+** Badge It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: badge
+:END:
+
+** Save It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: save
+:END:
+
+* Capacitors
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END:
+** Try It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: try
+:END:
+- You've now covered the basics of building a circuit on a breadboard. 
+- We'll now try building some different circuits, so you can improve your skills, and learn a few electronics concepts along the way.
+[[./img/w3_1a.png]]
+- We'll learn about a new component, called a *capacitor*. These come in different shapes and sizes, and act as a temporary store of electrical charge. Capacitance is measured in Farads.
+- Get a breadboard, and build this circuit.
+[[./img/w3_1.png]]
+- What do you notice happens when you push and release the switch?
+- Remove the capacitor and try again. 
+** Learn It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: learn
+:END:
+- When you pushed the switch, current is able to flow into the rest of the circuit, the capacitor very quickly charges with electrons and the LED illuminates.
+- When the switch is released, there is no more current from the battery flowing beyond the switch any more. When this happens, the capacitor releases its electrons into the circuit, through the LED and out to the negative end of the battery. This is why it doesn't go out immediately, but instead slowly dims as the capacitor discharges. If you use a higher value capacitor (e.g. 220\mu or 470\mu), the LED will stay lit for longer.
+- We can use capacitors in this way to give a time delay in a circuit.
+** Badge It - Silver
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: badge
+:END:
+- Build the circuit at the top of the page on a breadboard.
+** Badge It - Gold
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: badge
+:END:
+- This is the door buzzer circuit...
+[[./img/w3_2a.png]]
+- We can modify our door buzzer circuit by adding a one million Ohm (1M) resistor and a capacitor, to change the way the circuit behaves. The door buzzer has also been removed, to simplify things a little... 
+[[./img/w3_2.png]]
+- Build this circuit on a breadboard, and test it. Make sure you hold the PTM down for a few seconds when you connect it up. 
+- Capacitors prevent current from flowing past them in a circuit until they've charged up past about 66%. We're using this characteristic to get the effect you see here.
+- This is sometimes compared to the idea of a tap (the battery) filling a bucket (the capacitor). If the resistor wasn't there, this'd be the equivalent of having the water flow at full power into the bucket. It'd fill very quickly.
+- Adding increasingly large resistors is like turning rate of flow down to a trickle; it'll take much longer to fill the bucket.
+- Using a larger bucket (bigger capacitor values) is another way to increase the time it takes to fill.
+- Upload a photo of your board to collect the badge.
