@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>An introduction to Breadboards</title>
+<title>Little Big Data</title>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet" type="text/css" href="css/styles.css"/>
@@ -59,10 +59,10 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">An introduction to Breadboards</h1>
+<h1 class="title">Little Big Data</h1>
   <div class="github-fork-ribbon-wrapper left">
     <div class="github-fork-ribbon">
-      <a href="https://github.com/stsb11/7-SC-boards">Fork me on GitHub</a>
+      <a href="https://github.com/stsb11/9-CS-bigData">Fork me on GitHub</a>
     </div>
   </div>
 <div id="stickyribbon">
@@ -74,169 +74,225 @@ for the JavaScript code in this tag.
     </ul>
   </div>
 <div id="outline-container-sec-1" class="outline-2 activity">
-<h2 id="sec-1"><span class="section-number-2">1</span> Getting stuck in</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Handling data</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-sec-1-1" class="outline-3 try">
-<h3 id="sec-1-1">Try It</h3>
+<div id="outline-container-sec-1-1" class="outline-3 learn">
+<h3 id="sec-1-1">Learn It</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>Last lesson you looked at a virtual board, to become familiar with how a breadboard is connected internally.
+<li>Last lesson, we looked at the scale of data used globally, and thought about how collecting and analysing lots of records can help organisations and governments to improve.
 </li>
-<li>We'll now learn how to wire a breadboard so it works, and is neat. 
+<li>In this lesson, we'll try handling a large data set for ourselves.
 </li>
-<li>Ensure you have the following:
+<li>Black-hat hackers often wish to log in to others' IT systems by trying to guess their password. 
+</li>
+<li>One approach that can be taken is to 'brute-force' attack the system, by having a computer program attempt every possible password combination until it guesses correctly. It might try these first&#x2026;
 <ul class="org-ul">
-<li>Breadboard,
+<li>a
 </li>
-<li>Side cutters,
+<li>b
 </li>
-<li>Wire stripper,
+<li>c
 </li>
-<li>Long-nose pliers,
+<li>&#x2026;z
 </li>
-<li>About 15cm of red single-core wire,
+<li>aa
 </li>
-<li>About 15cm of black single-core wire,
+<li>ab
 </li>
-<li>2x LEDs. Any colour, 3mm or 5mm,
+<li>ac
 </li>
-<li>2x 330 Ohm resistors,
+<li>&#x2026;az
 </li>
-<li>1x 6x6 PTM switch.
+<li>ba
+</li>
+<li>bb
+</li>
+<li>etc&#x2026;
 </li>
 </ul>
 </li>
-<li>We'll start with something you're familiar with; the first circuit from the previous lesson.
+<li>By doing this, eventually any password can be eventually 'cracked'. 
+</li>
+<li>As you can imagine, if the password contains capital letters, then it'll take twice as long to run through all single-character passwords.
+</li>
+<li>If you include numbers, that's another 10 combinations on each sweep through.
+</li>
+<li>If you include puncutation marks (e.g. %, ^, &amp;) then this will take even longer.
+</li>
+<li>This can be rather slow.
 </li>
 </ul>
 
-<div class="figure">
-<p><img src="./img/w1_bb6.png" alt="w1_bb6.png" />
-</p>
-</div>
-<ul class="org-ul">
-<li>Rather than mess around with PP3 batteries <i>(is it flat? Have I got it the right way around? Why aren't there enough batteries, etc)</i>, we'll power or circuit with a plug-in DC power supply that runs on the mains.
-</li>
-<li>Take a short (e.g. 5cm-ish), and strip around 5mm of insulation from both ends. 
-</li>
-<li>Use a pair of long-nose pliers to bend one of the stripped ends by 90 degrees. While it's tempting to bend it with your fingers, you won't be able to get the bend as neat. 
-</li>
-</ul>
 
-<div class="figure">
-<p><img src="./img/w2_1.jpg" alt="w2_1.jpg" />
-</p>
-</div>
 <ul class="org-ul">
-<li>Put the bent end in the top-right hole, and leave the remaining wire hanging off the end of the board. 
+<li>Imagine you had a password-protected PDF file with your homework in it, and had forgotten the password to open it.
 </li>
-<li>Repeat this with a piece of black wire, putting it in the very bottom-left corner hole.
+<li>Let's imagine that its rather important you access the file, and so have written a password cracking program to repeatedly try to open the document with a brute-force attack.
 </li>
-<li>When we want to test our circuit (once its built), we can just attach the red crocodile clip to positive, and the black to negative. 
+<li><a href="http://calc.opensecurityresearch.com">Click here</a> to see a password cracking calculator. 
+<ul class="org-ul">
+<li>Set the password length to 6 characters (e.g. 'lockit' or 'system')
 </li>
-<li>By carefully trimming and bending the legs of your resistor, you can fit this flat to the breadboard as per the diagram above.
+<li>Set the keys per second to 'PDF - 22014K/s', for a PDF file.
 </li>
-<li>Trim the legs of your LED so they have about 7mm protruding (remember that the negative leg of the LED has a flat edge on its body).
+<li>Set the characterset to 'mixalpha'
 </li>
-<li>Finally, carefully measure and bend (with long-nose pliers) a piece of black single-core wire to neatly take it to the bottom row. 
+<li>Click 'Get time'
 </li>
 </ul>
-
-<div class="figure">
-<p><img src="./img/w2_2.jpg" alt="w2_2.jpg" />
-</p>
-</div>
-<ul class="org-ul">
-<li>Power it up!
+</li>
+<li>On average, how long will it take to find the password if we used a 7 character password? 
+</li>
+<li>How about 8 characters? Does the extra character make much difference?
+</li>
+<li>What if we used mixed alphabet and numeric characters for an 8 character password?
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3 try">
+<div id="outline-container-sec-1-2" class="outline-3 learn">
 <h3 id="sec-1-2">Try It</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>We'll add a PTM switch to the board, so that we've got the same circuit that went into our LED torch at the start of the year. 
+<li>Most people tend to use words for passwords, rather than random characters. 
 </li>
-<li>Fetch a 6x6 PTM switch from the component racks, and take a moment to look at it. 
+<li>A second form of password attack is using a dictionary file, which contains common words. 
 </li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/w2_3.png" alt="w2_3.png" />
-</p>
-</div>
-<ul class="org-ul">
-<li>These switches are made by having two hoops of metal side by side, with a gap between them. One of the hoops is emphasised in the picture above. 
+<li>Dictionary files are readily (and freely) available on the web. Click <a href="./img/passwords.txt">here</a> to download a relatively small password file, containing 1.1 million passwords. 
 </li>
-<li>When the button is pushed, a short piece of wire touches both hoops, closing the switch and allowing current to flow from one hoop to the other. 
+<li>Getting a human to work through the list, typing each password until they get the correct one could take some time.
 </li>
-<li>Modify your circuit to include the switch, as shown below. The centre of a breadboard is designed to take components like chips and switches. You need to ensure that the switch is the right way around (so that the hoops in the switch run <b>vertically</b>). 
+<li>Getting a computer to run through the list won't take quite so long.
+</li>
+<li>We'll write a short (white-hat) program to allow users to test their passwords to see if they're secure or not.
+</li>
+<li>We'll start simple, and add complexity slowly.
 </li>
 </ul>
-
-<div class="figure">
-<p><img src="./img/w2_4.jpg" alt="w2_4.jpg" />
-</p>
-</div>
-<ul class="org-ul">
-<li>Connect it to power, and give it a try!
-</li>
-<li>The diagram below shows the circuit before the PTM is pushed (shown in blue) and the additional connections when the switch pushed (orange).
-</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/w2_5.jpg" alt="w2_5.jpg" /> 
-</p>
 </div>
 </div>
-</div>
-<div id="outline-container-sec-1-3" class="outline-3 badge">
-<h3 id="sec-1-3">Badge It - Silver</h3>
+<div id="outline-container-sec-1-3" class="outline-3 quote">
+<h3 id="sec-1-3">Try It</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>Create this circuit on a breadboard, and take a picture of it.
+<li>Often, developers want to write an outline of a program before writing it. By writing the code in human-readable English, it becomes easier to articulate the flow of our program, even if we don't know all the command words to actually write it yet.
+</li>
+<li>We call this <b>pseudocode</b>. A simple dictionary search algorithm could be expressed like this:
+</li>
+</ul>
+<pre class="example">
+1. Make a variable called 'foundPass' and set it to False. We'll change this if your password is found.
+2. Ask user for the password to test. Store as 'yourPassword'
+3. Store some passwords in a list. Let's call it 'passwordList'
+4. For each password in passwordList...
+    4a. If yourPassword is the same as the current passwordList item...
+        4a. i. Print a message, saying we've found your password
+        4a. ii. Set foundPass to True
+5. If foundPass is False, print a message to say the password wasn't found.
+</pre>
+
+<ul class="org-ul">
+<li>Load up IDLE, start a new program (File -&gt; New) and copy the code below into the window:
 </li>
 </ul>
 
-<div class="figure">
-<p><img src="./img/w2_6.png" alt="w2_6.png" />
-</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">passwordList</span>=[<span style="color: #2aa198;">'password'</span>,<span style="color: #2aa198;">'123456'</span>,<span style="color: #2aa198;">'batman'</span>]
+
+<span style="color: #268bd2;">yourPassword</span>=<span style="color: #657b83; font-weight: bold;">input</span>(<span style="color: #2aa198;">"Please enter a password: "</span>)
+<span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">False</span>
+
+<span style="color: #859900; font-weight: bold;">for</span> tryPass <span style="color: #859900; font-weight: bold;">in</span> passwordList:
+    <span style="color: #859900; font-weight: bold;">if</span> yourPassword==tryPass:
+        <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Your password could be hacked."</span>)
+        <span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">True</span>
+
+<span style="color: #859900; font-weight: bold;">if</span> foundPass==<span style="color: #268bd2; font-weight: bold;">False</span>:
+    <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"That password isn't in my list."</span>)
+</pre>
 </div>
+
+<ul class="org-ul">
+<li>Save the file as 'simplePassword.py' and run the program a few times to see how it works. 
+</li>
+<li>This is a start, but three passwords simply isn't enough for a dictionary attack. 
+</li>
+<li>Time for an upgrade. Save <a href="./img/passwords.txt">this file</a> to your home drive, ensuring its in the same directory that you save your Python work into. 
+</li>
+<li>Make another new file, and add this code to it:
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Loading passwords... Please wait..."</span>)
+<span style="color: #268bd2;">theFile</span> = <span style="color: #657b83; font-weight: bold;">open</span>(<span style="color: #2aa198;">'passwords.txt'</span>, <span style="color: #2aa198;">'r'</span>)
+<span style="color: #268bd2;">passwordList</span>=[]
+
+<span style="color: #859900; font-weight: bold;">for</span> eachLine <span style="color: #859900; font-weight: bold;">in</span> theFile:
+    <span style="color: #859900; font-weight: bold;">for</span> eachWord <span style="color: #859900; font-weight: bold;">in</span> eachLine.split():
+        passwordList.append(eachWord)
+
+theFile.close()
+
+<span style="color: #268bd2;">yourPassword</span>=<span style="color: #657b83; font-weight: bold;">input</span>(<span style="color: #2aa198;">"Please enter a password: "</span>)
+<span style="color: #268bd2;">passwordPosition</span>=0
+<span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">False</span>
+
+<span style="color: #859900; font-weight: bold;">for</span> tryPass <span style="color: #859900; font-weight: bold;">in</span> passwordList:
+    <span style="color: #268bd2;">passwordPosition</span>+=1
+    <span style="color: #859900; font-weight: bold;">if</span> yourPassword==tryPass:
+        <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Found it in record "</span> + <span style="color: #657b83; font-weight: bold;">str</span>(passwordPosition))
+        <span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">True</span>
+
+<span style="color: #859900; font-weight: bold;">if</span> foundPass==<span style="color: #268bd2; font-weight: bold;">False</span>:
+    <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"That password is not in the dictionary."</span>)
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li>Test the program, using some passwords. Try predictable ones (e.g. 123456) and any others you can think of.
+</li>
+<li><b>Tip:</b> Avoid typing your own password; another person sitting nearby could see it.
+</li>
+</ul>
 </div>
 </div>
 <div id="outline-container-sec-1-4" class="outline-3 badge">
-<h3 id="sec-1-4">Badge It - Gold</h3>
+<h3 id="sec-1-4">Badge It - Silver</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li>Create this circuit on a breadboard, and take a picture of it.
+<li>This program uses a lot of the ideas from the previous version of the program, but has a few new lines. If you look at the code and think about the variable names, you should be able to come up with an explanation of how it works. 
+</li>
+<li>Write out pseudocode to explain how the program works.
 </li>
 </ul>
-
-<div class="figure">
-<p><img src="./img/w2_7.png" alt="w2_7.png" />
-</p>
-</div>
 </div>
 </div>
 <div id="outline-container-sec-1-5" class="outline-3 badge">
-<h3 id="sec-1-5">Badge It - Platinum</h3>
+<h3 id="sec-1-5">Badge It - Gold</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
-<li>This is an advanced form of the door buzzer that removes the need to use a switch. A user can simply touch the two stripped wires shown on the left-hand side of the circuit diagram, and the LED and buzzer will energise. 
+<li>Make a text file with this Monday's lessons in it; one on each line.
+</li>
+<li>Write another with Tuesday's lessons in it. Again, put one on each line.
+</li>
+<li>Write a program which allows you to enter a lesson. 
+</li>
+<li>The program should tell you if the lesson is on Monday, Tuesday or neither. 
 </li>
 </ul>
-
-<div class="figure">
-<p><img src="./img/w2_8.png" alt="w2_8.png" />
-</p>
 </div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3 badge">
+<h3 id="sec-1-6">Badge It - Platinum</h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
-<li>It uses a pair of NPN Transistors connected together, which multiplies their effect. This arrangement is called a Darlington Pair. 
-</li>
-<li>You'll need to look up which leg of the transistor is which online in order to be able to build this. Get your teacher to check it before you turn it on!
+<li>Improve your program by having it tell you which lesson period AND which day the lesson is on.
 </li>
 </ul>
 </div>

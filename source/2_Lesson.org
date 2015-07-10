@@ -5,13 +5,13 @@
 #+HTML_HEAD_EXTRA: <script src="js/navbar.js" type="text/javascript"></script>
 #+OPTIONS: f:nil author:nil num:1 creator:nil timestamp:nil toc:nil html-style:nil
 
-#+TITLE: An introduction to Breadboards
+#+TITLE: Little Big Data
 #+AUTHOR: Stephen Brown
 
 #+BEGIN_HTML
   <div class="github-fork-ribbon-wrapper left">
     <div class="github-fork-ribbon">
-      <a href="https://github.com/stsb11/7-SC-boards">Fork me on GitHub</a>
+      <a href="https://github.com/stsb11/9-CS-bigData">Fork me on GitHub</a>
     </div>
   </div>
 <div id="stickyribbon">
@@ -87,71 +87,140 @@
 :HTML_CONTAINER_CLASS: save
 :END:
 
-* Getting stuck in
+* Handling data
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: activity
 :END:
+** Learn It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: learn
+:END:
+- Last lesson, we looked at the scale of data used globally, and thought about how collecting and analysing lots of records can help organisations and governments to improve.
+- In this lesson, we'll try handling a large data set for ourselves.
+- Black-hat hackers often wish to log in to others' IT systems by trying to guess their password. 
+- One approach that can be taken is to 'brute-force' attack the system, by having a computer program attempt every possible password combination until it guesses correctly. It might try these first...
+    - a
+    - b
+    - c
+    - ...z
+    - aa
+    - ab
+    - ac
+    - ...az
+    - ba
+    - bb
+    - etc...
+- By doing this, eventually any password can be eventually 'cracked'. 
+- As you can imagine, if the password contains capital letters, then it'll take twice as long to run through all single-character passwords.
+- If you include numbers, that's another 10 combinations on each sweep through.
+- If you include puncutation marks (e.g. %, ^, &) then this will take even longer.
+- This can be rather slow.
+
+
+- Imagine you had a password-protected PDF file with your homework in it, and had forgotten the password to open it.
+- Let's imagine that its rather important you access the file, and so have written a password cracking program to repeatedly try to open the document with a brute-force attack.
+- [[http://calc.opensecurityresearch.com][Click here]] to see a password cracking calculator. 
+    - Set the password length to 6 characters (e.g. 'lockit' or 'system')
+    - Set the keys per second to 'PDF - 22014K/s', for a PDF file.
+    - Set the characterset to 'mixalpha'
+    - Click 'Get time'
+- On average, how long will it take to find the password if we used a 7 character password? 
+- How about 8 characters? Does the extra character make much difference?
+- What if we used mixed alphabet and numeric characters for an 8 character password?
 ** Try It
 :PROPERTIES:
-:HTML_CONTAINER_CLASS: try
+:HTML_CONTAINER_CLASS: learn
 :END:
-- Last lesson you looked at a virtual board, to become familiar with how a breadboard is connected internally.
-- We'll now learn how to wire a breadboard so it works, and is neat. 
-- Ensure you have the following:
-   - Breadboard,
-   - Side cutters,
-   - Wire stripper,
-   - Long-nose pliers,
-   - About 15cm of red single-core wire,
-   - About 15cm of black single-core wire,
-   - 2x LEDs. Any colour, 3mm or 5mm,
-   - 2x 330 Ohm resistors,
-   - 1x 6x6 PTM switch.
-- We'll start with something you're familiar with; the first circuit from the previous lesson.
-[[./img/w1_bb6.png]]
-- Rather than mess around with PP3 batteries /(is it flat? Have I got it the right way around? Why aren't there enough batteries, etc)/, we'll power or circuit with a plug-in DC power supply that runs on the mains.
-- Take a short (e.g. 5cm-ish), and strip around 5mm of insulation from both ends. 
-- Use a pair of long-nose pliers to bend one of the stripped ends by 90 degrees. While it's tempting to bend it with your fingers, you won't be able to get the bend as neat. 
-[[./img/w2_1.jpg]]
-- Put the bent end in the top-right hole, and leave the remaining wire hanging off the end of the board. 
-- Repeat this with a piece of black wire, putting it in the very bottom-left corner hole.
-- When we want to test our circuit (once its built), we can just attach the red crocodile clip to positive, and the black to negative. 
-- By carefully trimming and bending the legs of your resistor, you can fit this flat to the breadboard as per the diagram above.
-- Trim the legs of your LED so they have about 7mm protruding (remember that the negative leg of the LED has a flat edge on its body).
-- Finally, carefully measure and bend (with long-nose pliers) a piece of black single-core wire to neatly take it to the bottom row. 
-[[./img/w2_2.jpg]]
-- Power it up!
+- Most people tend to use words for passwords, rather than random characters. 
+- A second form of password attack is using a dictionary file, which contains common words. 
+- Dictionary files are readily (and freely) available on the web. Click [[./img/passwords.txt][here]] to download a relatively small password file, containing 1.1 million passwords. 
+- Getting a human to work through the list, typing each password until they get the correct one could take some time.
+- Getting a computer to run through the list won't take quite so long.
+- We'll write a short (white-hat) program to allow users to test their passwords to see if they're secure or not.
+- We'll start simple, and add complexity slowly.
 ** Try It
 :PROPERTIES:
-:HTML_CONTAINER_CLASS: try
+:HTML_CONTAINER_CLASS: quote
 :END:
-- We'll add a PTM switch to the board, so that we've got the same circuit that went into our LED torch at the start of the year. 
-- Fetch a 6x6 PTM switch from the component racks, and take a moment to look at it. 
-[[./img/w2_3.png]]
-- These switches are made by having two hoops of metal side by side, with a gap between them. One of the hoops is emphasised in the picture above. 
-- When the button is pushed, a short piece of wire touches both hoops, closing the switch and allowing current to flow from one hoop to the other. 
-- Modify your circuit to include the switch, as shown below. The centre of a breadboard is designed to take components like chips and switches. You need to ensure that the switch is the right way around (so that the hoops in the switch run *vertically*). 
-[[./img/w2_4.jpg]]
-- Connect it to power, and give it a try!
-- The diagram below shows the circuit before the PTM is pushed (shown in blue) and the additional connections when the switch pushed (orange).
-[[./img/w2_5.jpg]] 
+- Often, developers want to write an outline of a program before writing it. By writing the code in human-readable English, it becomes easier to articulate the flow of our program, even if we don't know all the command words to actually write it yet.
+- We call this *pseudocode*. A simple dictionary search algorithm could be expressed like this:
+#+begin_example
+1. Make a variable called 'foundPass' and set it to False. We'll change this if your password is found.
+2. Ask user for the password to test. Store as 'yourPassword'
+3. Store some passwords in a list. Let's call it 'passwordList'
+4. For each password in passwordList...
+    4a. If yourPassword is the same as the current passwordList item...
+        4a. i. Print a message, saying we've found your password
+        4a. ii. Set foundPass to True
+5. If foundPass is False, print a message to say the password wasn't found.
+#+end_example
+
+- Load up IDLE, start a new program (File -> New) and copy the code below into the window:
+
+#+begin_src python   
+passwordList=['password','123456','batman']
+
+yourPassword=input("Please enter a password: ")
+foundPass=False
+    
+for tryPass in passwordList:
+    if yourPassword==tryPass:
+        print("Your password could be hacked.")
+        foundPass=True
+
+if foundPass==False:
+    print("That password isn't in my list.")
+#+end_src 
+
+- Save the file as 'simplePassword.py' and run the program a few times to see how it works. 
+- This is a start, but three passwords simply isn't enough for a dictionary attack. 
+- Time for an upgrade. Save [[./img/passwords.txt][this file]] to your home drive, ensuring its in the same directory that you save your Python work into. 
+- Make another new file, and add this code to it:
+
+#+begin_src python   
+print("Loading passwords... Please wait...")
+theFile = open('passwords.txt', 'r')
+passwordList=[]
+
+for eachLine in theFile:
+    for eachWord in eachLine.split():
+        passwordList.append(eachWord)
+
+theFile.close()
+
+yourPassword=input("Please enter a password: ")
+passwordPosition=0
+foundPass=False
+
+for tryPass in passwordList:
+    passwordPosition+=1
+    if yourPassword==tryPass:
+        print("Found it in record " + str(passwordPosition))
+        foundPass=True
+
+if foundPass==False:
+    print("That password is not in the dictionary.")
+#+end_src 
+
+
+- Test the program, using some passwords. Try predictable ones (e.g. 123456) and any others you can think of.
+- *Tip:* Avoid typing your own password; another person sitting nearby could see it.
 ** Badge It - Silver
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- Create this circuit on a breadboard, and take a picture of it.
-[[./img/w2_6.png]]
+- This program uses a lot of the ideas from the previous version of the program, but has a few new lines. If you look at the code and think about the variable names, you should be able to come up with an explanation of how it works. 
+- Write out pseudocode to explain how the program works.
 ** Badge It - Gold
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- Create this circuit on a breadboard, and take a picture of it.
-[[./img/w2_7.png]]
+- Make a text file with this Monday's lessons in it; one on each line.
+- Write another with Tuesday's lessons in it. Again, put one on each line.
+- Write a program which allows you to enter a lesson. 
+- The program should tell you if the lesson is on Monday, Tuesday or neither. 
 ** Badge It - Platinum
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- This is an advanced form of the door buzzer that removes the need to use a switch. A user can simply touch the two stripped wires shown on the left-hand side of the circuit diagram, and the LED and buzzer will energise. 
-[[./img/w2_8.png]]
-- It uses a pair of NPN Transistors connected together, which multiplies their effect. This arrangement is called a Darlington Pair. 
-- You'll need to look up which leg of the transistor is which online in order to be able to build this. Get your teacher to check it before you turn it on!
+- Improve your program by having it tell you which lesson period AND which day the lesson is on.
