@@ -135,6 +135,8 @@
 - Starting with when you wake up on a weekday morning, write about every digital interaction you have (some are more subtle than others). For each, try to identify how this could be useful to someone working on big data.
 - For example, as your bus drives into School, traffic cameras by the side of the road will monitor the number of vehicles on the road, and their average speed. This data is collected and used by traffic services (as seen on Google maps, Sat-Nav systems, radio station reports, AA traffic...) to alert motorists to any potential problems so they can avoid them. Over the long-term, the Government agency responsible for the UK road network (called the Highways Agency) will use this data from all over the UK to decide where roads need to be made larger and identify where accidents commonly occur (to reduce speed limits or install speed cameras). 
 - You could also consider: What services do you use on your 'phone? What if you use a supermarket? What happens in tutor time? The Chill? The library? Do you use a service like NetFlix or Amazon Prime? What about Instagram? What if you had a doctor/dentist appointment? 
+
+
 - *Silver:* A brief report, outlining 3 different pieces of collected data with some evidence of big-data applications identified.
 - *Gold:* A more detailed report, outlining practical ways the data could be used as part of a big data analysis. 
 - *Platinum:* A comprehensive report, outlining numerous interactions and the ways in which the data could be used by various parties. 
