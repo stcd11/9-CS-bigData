@@ -96,7 +96,7 @@
 :HTML_CONTAINER_CLASS: try
 :END:
 - Graphs are important when a human needs a visualisation of a large data set. 
-- In this lesson, we're going to investigate climate change in the UK since about 1930, and you'll be able to draw your own conclusions about global warming.
+- In this lesson, we're going to investigate climate change in the UK since about 1910, and you'll be able to draw your own conclusions about global warming.
 - Before we get too carried away, we'll start by drawing a simple line graph and then build up to something more elaborate.
 - Load up IDLE, start a new program (File -> New) and copy the code below into the window:
 
@@ -122,71 +122,73 @@ plt.show()
 #+end_src 
 
 - One of the great things with Python is its ability to import [[https://xkcd.com/353/][new functionality]] to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
-- Our program starts by importing a graph-drawing library. 
+- Our program starts by importing a graph-drawing library. This contains extra functions that Python doesn't normally have. 
 - We then set the values we want to assign to the X and Y axes. 
     - I've plotted a little bit of the y = x^2 graph, from x=0 to 11. 
 - We get Python to plot the actual graph
 - And we then add labels to the X and Y axis.
-- Finally, we ask Python to show the rendered graph to us. 
-- Change some of the values, and plot a different line. 
+- Finally, we ask Python to show the graph. 
+- *Try it:* Change some of the values, and plot a different line. 
 ** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- As part of a drive to be more transparent, the UK Government have released a little over 25000 data sets for anyone to access. You can browse them [[http://data.gov.uk/data/search][here]].
-- We'll look at some climate data from the met office (the UK weather agency). I've picked up the historic weather data for 'valley' in north-west Wales, but you can work on any location you're interested in. 
+- As part of a drive to be more transparent, the UK Government have released a little over 25000 raw data sets for anyone to access. You can browse them [[http://data.gov.uk/data/search][here]].
+- We'll look at some climate data from the met office (the UK weather agency). The latest versions of their datasets can  be freely downloaded from their site [[http://www.metoffice.gov.uk/climate/uk/summaries/datasets][here]].
+- I've picked up the historic mean temperature for the UK, but you can work on any location you're interested in. 
 - Scientists believe that in general, the World is getting hotter over time due to the burning of fossil fuels. We'll write a short program to analyse the data from one weather station and see if we can spot a pattern.
-- Our data looks like this when you download it.
+- Our data looks like [[./img/uk.txt][this]] when you download it.
 - Put this code into a new program
 
 #+begin_src python   
-# Import matplotlib, numpy (a maths library) and csv (to deal with the file).
+# Python graph-drawing with matplotlib.
 import matplotlib.pyplot as plt
-import numpy
 import csv
 
-# Open the data file, and read the data in
-with open("valleydata.txt", 'r') as csvfile:
-    reader =csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
-    data = list(reader)
+# Open the data file, and read the data in.
+with open("uk.txt", 'r') as csvfile:
+    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
+    data=list(reader)
     # Remove the first row, which has the column headers in it.
     data.pop(0)
 
-# Grab the third column of data, and store it in a list.
-maxTemps = [float(i[2]) for i in data]
-yearlyAverage = []
-a=0
-b=11
+# Pick up the individual rows, one by one.
+for eachYear in range (0,len(data)):
+    thisYr=data[eachYear]   # thisYear is a single year's data.
+    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
 
-# Loop through, taking 12 months data at a time
-while b < len(maxTemps):
-    yearlyAverage.append(sum(maxTemps[a:b])/12)
-    a += 12
-    b += 12
+    # Trim off the year (we don't want to plot that)
+    thisYr.pop(0)
+    # Trim off the last 5 records (these are Season averages)
+    del thisYr[len(thisYr)-5:len(thisYr)]
 
-# Set up a list of 1930 to 2014, for use as the X-axis labels
-theYears= [int(i) for i in range(1930,2014)]
-
-# Plot the line
-plt.plot(theYears,yearlyAverage)
-
-# Add decoration
+    # Plot the line for that year.
+    plt.plot(thisYr,label=whichYr)
+    
+# then add some labels
 plt.ylabel('Mean temperature')
-plt.xlabel('Year')
-plt.title('Mean temperature, 1930-2014')
+plt.xlabel('Month')
+plt.title('Mean temperatures, 1910-2014')
+# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
 
-# Show the finished graph
+# and show the finished graph
 plt.show()
 #+end_src 
 
-- One of the great things with Python is its ability to import [[https://xkcd.com/353/][new functionality]] to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
-- Our program starts by importing a graph-drawing library. 
-- We then set the values we want to assign to the X and Y axes. 
-    - I've plotted a little bit of the y = x^2 graph, from x=0 to 11. 
-- We get Python to plot the actual graph
-- And we then add labels to the X and Y axis.
-- Finally, we ask Python to show the rendered graph to us. 
-- Change some of the values, and plot a different line. 
+- We've got over a century of weather data here. Each line represents a year's average temperature. We've commented out the 'legend=' line, as if we didn't (try un-commenting it), it obscures the graph. 
+- On the x-axis, January is month 0, February is 1, December is 11. 
+- Ignoring that you can't tell which year is which (at the moment), could you make any conclusions about what the graph shows? Examples could be:
+     - The hottest mean temperature ever was in July, and was about 17.5 degrees. 
+     - The weather starts getting warmer after February.
+     - Can you think of some others?
+** Remix It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: try
+:END:
+- We set out to look at climate change. 
+- As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
+- 
+- *Platinum* - pending
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
