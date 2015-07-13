@@ -217,8 +217,46 @@ plt.show()
 </li>
 <li>As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
 </li>
-<li></li>
-<li><b>Platinum</b> - pending
+<li>Find the line (towards the top) that says:
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> eachYear <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span> (0,<span style="color: #657b83; font-weight: bold;">len</span>(data)):
+</pre>
+</div>
+<ul class="org-ul">
+<li>Change it to:
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> eachYear <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span> (0,<span style="color: #657b83; font-weight: bold;">len</span>(data),30):
+</pre>
+</div>
+<ul class="org-ul">
+<li>The numbers in brackets after range are doing the following:
+<ul class="org-ul">
+<li>the 0 is saying to start with the first year's (1910) data
+</li>
+<li>the <b>len(data)</b> command gets the length of the dataset (about 105), and tells the loop to repeat until it gets to this
+</li>
+<li>The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
+</li>
+</ul>
+</li>
+<li>This'll yield only 4 plotted lines, and also means we'll have room to show the labels that tell us which line is which. 
+</li>
+<li>To enable labels, remove the hash symbol from the start of the line that says:
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
 </li>
 </ul>
 </div>
@@ -227,7 +265,7 @@ plt.show()
 <h3 id="sec-1-4">Badge It</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li><b>Silver</b> - pending
+<li><b>Silver</b> - 
 </li>
 <li><b>Gold</b> - pending
 </li>

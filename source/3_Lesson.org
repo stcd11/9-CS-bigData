@@ -187,12 +187,28 @@ plt.show()
 :END:
 - We set out to look at climate change. 
 - As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
-- 
-- *Platinum* - pending
+- Find the line (towards the top) that says:
+#+begin_src python   
+for eachYear in range (0,len(data)):
+#+end_src 
+- Change it to:
+#+begin_src python   
+for eachYear in range (0,len(data),30):
+#+end_src 
+- The numbers in brackets after range are doing the following:
+  - the 0 is saying to start with the first year's (1910) data
+  - the *len(data)* command gets the length of the dataset (about 105), and tells the loop to repeat until it gets to this
+  - The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
+- This'll yield only 4 plotted lines, and also means we'll have room to show the labels that tell us which line is which. 
+- To enable labels, remove the hash symbol from the start of the line that says:
+#+begin_src python   
+# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
+#+end_src 
+- Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- *Silver* - pending
+- *Silver* - 
 - *Gold* - pending
 - *Platinum* - pending
