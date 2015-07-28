@@ -125,6 +125,13 @@
 - Each of us has a digital footprint, which we leave every day. The data we generate can be used as part of big data analysis projects to provide information to the Government to help assign NHS funding, or to help supermarkets decide how much milk to order. 
 - Consider the NHS. Across the country, millions of people are treated every year. Each time a patient is treated, an electronic record of the problem, diagnosis and treatment it stored. 
 - As the Government has all that data, they can quickly see what diseases are responsible for the most deaths in Britain, and fund research on improving treatments. It is also possible to see which hospitals are curing more people than others, and take steps to tackle underperformance. Those hospitals who treat more patients can be given more funding and so on.
+- Tech/Lifestyle website, '[[http://mashable.com][Mashable]]' has an excellent [[http://mashable.com/2013/07/17/big-data-projects/][article]] on big data, featuring examples like:
+- [[http://project.wnyc.org/transit-time][WNYC]] (A New York radio station) used big data to help commuters anticipate travel times...
+#+BEGIN_HTML
+<iframe frameborder="0" scrolling ="no" src="http://project.wnyc.org/transit-time/index.html#40.72280,-73.95464,12,825" width="100%" height="785" ></iframe>
+#+END_HTML
+- Twitter engineers used geolocation data from every tweet in several major cities to build a [[http://twitter.github.io/interactive/andes/#][contour map of the region]]. The highest points indicate areas where more tweeting takes place. 
+- [[http://patient.info/local-map?url%3Dhealth%252Fhay-fever-leaflet&dateRange%3D28&tab%3Dseasonal][Patient.info]] collates search data from their site to show a heat-map of the UK based on web searches.
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
