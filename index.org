@@ -25,7 +25,7 @@
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
 :END:
-* [[file:pages/4_Lesson.html][Week 4 - Pending]]
+* [[file:pages/4_Lesson.html][Week 4 - Ethics]]
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
 :END:      
