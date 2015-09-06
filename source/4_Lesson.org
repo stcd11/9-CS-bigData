@@ -95,7 +95,6 @@
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- ZZZZZZZ
 - Big data could have a number of benefits to our everyday lives...
 
 
