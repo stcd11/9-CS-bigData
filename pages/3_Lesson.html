@@ -62,7 +62,7 @@ for the JavaScript code in this tag.
 <h1 class="title">Little Big Data</h1>
   <div class="github-fork-ribbon-wrapper left">
     <div class="github-fork-ribbon">
-      <a href="https://github.com/stsb11/7-SC-boards">Fork me on GitHub</a>
+      <a href="https://github.com/stsb11/9-CS-bigData">Fork me on GitHub</a>
     </div>
   </div>
 <div id="stickyribbon">
@@ -71,224 +71,232 @@ for the JavaScript code in this tag.
       <li><a href="2_Lesson.html">Week2</a></li>
       <li><a href="3_Lesson.html">Week3</a></li>
       <li><a href="4_Lesson.html">Week4</a></li>
+      <li><a href="5_Lesson.html">Week5</a></li>
     </ul>
   </div>
 <div id="outline-container-sec-1" class="outline-2 activity">
-<h2 id="sec-1"><span class="section-number-2">1</span> Graph-ics</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Handling data</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-sec-1-1" class="outline-3 try">
-<h3 id="sec-1-1">Try It</h3>
+<div id="outline-container-sec-1-1" class="outline-3 learn">
+<h3 id="sec-1-1">Learn It</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>Graphs are important when humans need visualisations of a large data set to help them look for patterns and meaning. 
+<li>Last lesson, we looked at the scale of data used globally, and thought about how collecting and analysing lots of records can help organisations and governments to improve.
 </li>
-<li>In this lesson, we're going to investigate climate change in the UK since about 1910, and you'll be able to draw your own conclusions about global warming.
+<li>In this lesson, we'll try handling a large data set for ourselves.
 </li>
-<li>Before we get too carried away, we'll start by drawing a simple line graph and then build up to something more elaborate.
+<li>Black-hat hackers often wish to log in to others' IT systems by trying to guess their password. 
 </li>
+<li>One approach that can be taken is to 'brute-force' attack the system, by having a computer program attempt every possible password combination until it guesses correctly. It might try these first&#x2026;
+<ul class="org-ul">
+<li>a
+</li>
+<li>b
+</li>
+<li>c
+</li>
+<li>&#x2026;z
+</li>
+<li>aa
+</li>
+<li>ab
+</li>
+<li>ac
+</li>
+<li>&#x2026;az
+</li>
+<li>ba
+</li>
+<li>bb
+</li>
+<li>etc&#x2026;
+</li>
+</ul>
+</li>
+<li>By doing this, eventually any password can be eventually 'cracked'. 
+</li>
+<li>As you can imagine, if the password contains capital letters, then it'll take twice as long to run through all single-character passwords.
+</li>
+<li>If you include numbers, that's another 10 combinations on each sweep through.
+</li>
+<li>If you include puncutation marks (e.g. %, ^, &amp;) then this will take even longer.
+</li>
+<li>This can be rather slow.
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Imagine you had a password-protected PDF file with your homework in it, and had forgotten the password to open it.
+</li>
+<li>Let's imagine that its rather important you access the file, and so have written a password cracking program to repeatedly try to open the document with a brute-force attack.
+</li>
+<li><a href="http://calc.opensecurityresearch.com">Click here</a> to see a password cracking calculator. 
+<ul class="org-ul">
+<li>Set the password length to 6 characters (e.g. 'lockit' or 'system')
+</li>
+<li>Set the keys per second to 'PDF - 22014K/s', for a PDF file.
+</li>
+<li>Set the characterset to 'mixalpha'
+</li>
+<li>Click 'Get time'
+</li>
+</ul>
+</li>
+<li>On average, how long will it take to find the password if we used a 7 character password? 
+</li>
+<li>How about 8 characters? Does the extra character make much difference?
+</li>
+<li>What if we used mixed alphabet and numeric characters for an 8 character password?
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3 learn">
+<h3 id="sec-1-2">Try It</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Most people tend to use words for passwords, rather than random characters. 
+</li>
+<li>A second form of password attack is using a dictionary file, which contains common words. 
+</li>
+<li>Dictionary files are readily (and freely) available on the web. Click <a href="./img/passwords.txt">here</a> to download a relatively small password file, containing 1.1 million passwords. 
+</li>
+<li>Getting a human to work through the list, typing each password until they get the correct one could take some time.
+</li>
+<li>Getting a computer to run through the list won't take quite so long.
+</li>
+<li>We'll write a short (white-hat) program to allow users to test their passwords to see if they're secure or not.
+</li>
+<li>We'll start simple, and add complexity slowly.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3 quote">
+<h3 id="sec-1-3">Try It</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Often, developers want to write an outline of a program before writing it. By writing the code in human-readable English, it becomes easier to articulate the flow of our program, even if we don't know all the command words to actually write it yet.
+</li>
+<li>We call this <b>pseudocode</b>. A simple dictionary search algorithm could be expressed like this:
+</li>
+</ul>
+<pre class="example">
+1. Make a variable called 'foundPass' and set it to False. We'll change this if your password is found.
+2. Ask user for the password to test. Store as 'yourPassword'
+3. Store some passwords in a list. Let's call it 'passwordList'
+4. For each password in passwordList...
+    4a. If yourPassword is the same as the current passwordList item...
+        4a. i. Print a message, saying we've found your password
+        4a. ii. Set foundPass to True
+5. If foundPass is False, print a message to say the password wasn't found.
+</pre>
+
+<ul class="org-ul">
 <li>Load up IDLE, start a new program (File -&gt; New) and copy the code below into the window:
 </li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-python"># matplotlib - the Python graph-drawing library
-import matplotlib.pyplot as plt
-import numpy
+<pre class="src src-python">passwordList=['password','123456','batman']
 
-# Set the X and Y values (same number of elements in both lists)
-yVals= [0,1,4,9,16,25,36,49,64,81,100,121]
-xVals= [0,1,2,3,4,5,6,7,8,9,10,11]
+yourPassword=input("Please enter a password: ")
+foundPass=False
 
-# Plot the graph line
-plt.plot(xVals,yVals)
+for tryPass in passwordList:
+    if yourPassword==tryPass:
+	print("Your password could be hacked.")
+	foundPass=True
 
-# Add some labels
-plt.xlabel('x axis')
-plt.ylabel('y axis')
-plt.title('Graph title goes here')
-
-# Show the finished graph
-plt.show()
+if foundPass==False:
+    print("That password isn't in my list.")
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>One of the great things with Python is its ability to import <a href="https://xkcd.com/353/">new functionality</a> to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
+<li>Save the file as 'simplePassword.py' and run the program a few times to see how it works. 
 </li>
-<li>Our program starts by importing a graph-drawing library. This contains extra functions that Python doesn't normally have. 
+<li>This is a start, but three passwords simply isn't enough for a dictionary attack. 
 </li>
-<li>We then set the values we want to assign to the X and Y axes. 
-<ul class="org-ul">
-<li>I've plotted a little bit of the y = x<sup>2</sup> graph, from x=0 to 11. 
+<li>Time for an upgrade. Save <a href="./img/passwords.txt">this file</a> to your home drive, ensuring its in the same directory that you save your Python work into. 
 </li>
-</ul>
-</li>
-<li>We get Python to plot the actual graph
-</li>
-<li>And we then add labels to the X and Y axis.
-</li>
-<li>Finally, we ask Python to show the graph. 
-</li>
-<li><b>Try it:</b> Change some of the values, and plot a different line. 
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-2" class="outline-3 learn">
-<h3 id="sec-1-2">Learn It</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>As part of a drive to be more transparent, the UK Government have released a little over 25000 raw data sets for anyone to access. You can browse them <a href="http://data.gov.uk/data/search">here</a>.
-</li>
-<li>We'll look at some climate data from the met office (the UK weather agency). The latest versions of their datasets can  be freely downloaded from their site <a href="http://www.metoffice.gov.uk/climate/uk/summaries/datasets">here</a>.
-</li>
-<li>Scientists believe that in general, the World is getting hotter over time due to the burning of fossil fuels. We'll write a short program to graph over a century's worth of data to see if we can spot a pattern.
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-3" class="outline-3 code">
-<h3 id="sec-1-3">Code It</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li>Download the <b>UK mean temp</b> (make sure you get it <b>year ordered</b>, which is about half-way down the page) dataset to your computer, and open it in a text editor (eg. Notepad).
-</li>
-<li>The first 7 lines of the file contain a short introduction to what's in the file. This isn't much help to us. Delete all these lines, so that the very first thing in your text file is 'Year, JAN, FEB, etc'.
-</li>
-<li>Save this file in the same folder you've been saving your code into, and ensure that the filename is <b>uk.txt</b>.
-</li>
-<li>Next, create (and save) a new Python program with this code:
+<li>Make another new file, and add this code to it:
 </li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-python"># Python graph-drawing with matplotlib.
-import matplotlib.pyplot as plt
-import csv
+<pre class="src src-python">print("Loading passwords... Please wait...")
+theFile = open('passwords.txt', 'r')
+passwordList=[]
 
-# Open the data file, and read the data in.
-with open("UK.txt", 'r') as csvfile:
-    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
-    data=list(reader)
-    # Remove the first row, which has the column headers in it.
-    data.pop(0)
+for eachLine in theFile:
+    for eachWord in eachLine.split():
+	passwordList.append(eachWord)
 
-# Pick up the individual rows, one by one.
-for eachYear in range (0,len(data)):
-    thisYr=data[eachYear]   # thisYear is a single year's data.
-    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
+theFile.close()
 
-    # Trim off the year (we don't want to plot that)
-    thisYr.pop(0)
-    # Trim off the last 5 records (these are Season averages)
-    del thisYr[len(thisYr)-5:len(thisYr)]
+yourPassword=input("Please enter a password: ")
+passwordPosition=0
+foundPass=False
 
-    # Plot the line for that year.
-    plt.plot(thisYr,label=whichYr)
+for tryPass in passwordList:
+    passwordPosition+=1
+    if yourPassword==tryPass:
+	print("Found it in record " + str(passwordPosition))
+	foundPass=True
 
-# then add some labels
-plt.ylabel('Mean temperature')
-plt.xlabel('Month')
-plt.title('UK Mean Temperatures')
-# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-
-# and show the finished graph
-plt.show()
+if foundPass==False:
+    print("That password is not in the dictionary.")
 </pre>
 </div>
 
+
 <ul class="org-ul">
-<li>We've got over a century of weather data here. Each line represents a year's average temperature. We've commented out the 'legend=' line, as if we didn't (try un-commenting it), it obscures the graph. 
+<li>Test the program, using some passwords. Try predictable ones (e.g. 123456) and any others you can think of.
 </li>
-<li>On the x-axis, January is month 0, February is 1, December is 11. 
-</li>
-<li>Ignoring that you can't tell which year is which (at the moment), could you make any conclusions about what the graph shows? 
-</li>
-<li>An example could be: <i>The hottest mean temperature ever was in July, and was about 17.5 degrees</i>. 
+<li><b>Tip:</b> Avoid typing your own password; another person sitting nearby could see it.
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-1-4" class="outline-3 try">
-<h3 id="sec-1-4">Remix It</h3>
+<div id="outline-container-sec-1-4" class="outline-3 badge">
+<h3 id="sec-1-4">Badge It - Silver</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li>We set out to look at climate change. 
+<li>This program uses a lot of the ideas from the previous version of the program, but has a few new lines. If you look at the code and think about the variable names, you should be able to come up with an explanation of how it works. 
 </li>
-<li>As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
-</li>
-<li>Find the line (towards the top) that says:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python">for eachYear in range (0,len(data)):
-</pre>
-</div>
-<ul class="org-ul">
-<li>Change it to:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python">for eachYear in range (0,len(data),30):
-</pre>
-</div>
-<ul class="org-ul">
-<li>The numbers in brackets after range are doing the following:
-<ul class="org-ul">
-<li>the 0 is saying to start with the first year's (1910) data
-</li>
-<li>the <b>len(data)</b> command gets the length of the dataset (over 100 years worth), and tells the loop to repeat until it has looked at this many records,
-</li>
-<li>The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
-</li>
-</ul>
-</li>
-<li>This'll produce only 4 plotted lines, making the graph easier on the eye and also giving room to show the labels that tell us which line is which (the legend). 
-</li>
-<li>To enable labels, remove the hash symbol from the start of the line that says:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python"># legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-</pre>
-</div>
-<ul class="org-ul">
-<li>Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
+<li>Write out pseudocode to explain how the program works.
 </li>
 </ul>
 </div>
 </div>
 <div id="outline-container-sec-1-5" class="outline-3 badge">
-<h3 id="sec-1-5">Badge It</h3>
+<h3 id="sec-1-5">Badge It - Gold</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
-<li>Produce a short report on the UK climate, using graphs to support your arguments.
+<li>Make a text file with this Monday's lessons in it; one on each line.
+</li>
+<li>Write another with Tuesday's lessons in it. Again, put one on each line.
+</li>
+<li>Write a program which allows you to enter a lesson. 
+</li>
+<li>The program should tell you if the lesson is on Monday, Tuesday or neither. 
 </li>
 </ul>
-
-
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3 badge">
+<h3 id="sec-1-6">Badge It - Platinum</h3>
+<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
-<li><b>Silver</b> - In addition to one for the whole UK, plot at least one other graph, and comment on it.
-</li>
-<li><b>Gold</b> - Produce multiple graphs and make appropriate conclusions.
-</li>
-<li><b>Platinum</b> - Plot data from multiple sources on the same graph, and comment on them. You could compare Scotland and the South of England over the past 2 years, for instance.
+<li>Improve your program by having it tell you which lesson period AND which day the lesson is on.
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

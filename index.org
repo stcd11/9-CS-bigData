@@ -13,19 +13,23 @@
     </div>
 </div>
 #+END_HTML
-* [[file:pages/1_Lesson.html][Week 1 - Big data]]
+* [[file:pages/1_Lesson.html][Week 1 - Big Data]]
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: link-heading
+:END:     
+* [[file:pages/2_Lesson.html][Week 2 - Python]]
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
 :END:      
-* [[file:pages/2_Lesson.html][Week 2 - Handling data]]
+* [[file:pages/2_Lesson.html][Week 3 - Handling data]]
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
 :END:      
-* [[file:pages/3_Lesson.html][Week 3 - Getting Graph-ical]] 
+* [[file:pages/3_Lesson.html][Week 4 - Getting Graph-ical]] 
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
 :END:
-* [[file:pages/4_Lesson.html][Week 4 - Ethics]]
+* [[file:pages/4_Lesson.html][Week 5 - Ethic]]
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: link-heading
-:END:      
+:END

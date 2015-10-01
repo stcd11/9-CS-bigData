@@ -11,7 +11,7 @@
 #+BEGIN_HTML
   <div class="github-fork-ribbon-wrapper left">
     <div class="github-fork-ribbon">
-      <a href="https://github.com/stsb11/9-CS-bigData">Fork me on GitHub</a>
+      <a href="https://github.com/stsb11/7-SC-boards">Fork me on GitHub</a>
     </div>
   </div>
 <div id="stickyribbon">
@@ -20,6 +20,7 @@
       <li><a href="2_Lesson.html">Week2</a></li>
       <li><a href="3_Lesson.html">Week3</a></li>
       <li><a href="4_Lesson.html">Week4</a></li>
+      <li><a href="5_Lesson.html">Week5</a></li>
     </ul>
   </div>
 #+END_HTML
@@ -87,49 +88,136 @@
 :HTML_CONTAINER_CLASS: save
 :END:
 
-* Ethics
+* Graph-ics
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: activity
 :END:
-** Learn It
-:PROPERTIES:
-:HTML_CONTAINER_CLASS: learn
-:END:
-- Big data could have a number of benefits to our everyday lives...
-- Watch the video above. Discuss with a partner: 
-    - Which ideas in the video do you like the idea of? 
-    - What data are be needed in order to allow all the different functions that were shown? 
 ** Try It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: try
 :END:
-- In 2009, a German green party policician named Malte Spitz asked his mobile provider to provide all the data they collected on him over the space of six months. 
-- They refused, and so he sued them which allowed him to obtain the data.
-- As you would expect, the phone company's systems automatically tracked how many calls he made and received, but also stored a huge amount of geolocation data. 
-- By combining this with publicly available data from other sources (e.g. web sites, Tweets), Zeit newspaper journalists were able to produce a detailed account of his life.
-- You can re-live Malte's life [[http://www.zeit.de/datenschutz/malte-spitz-data-retention][here]]. Click the 'play' button to start.
-** Further reading
+- Graphs are important when humans need visualisations of a large data set to help them look for patterns and meaning. 
+- In this lesson, we're going to investigate climate change in the UK since about 1910, and you'll be able to draw your own conclusions about global warming.
+- Before we get too carried away, we'll start by drawing a simple line graph and then build up to something more elaborate.
+- Load up IDLE, start a new program (File -> New) and copy the code below into the window:
+
+#+begin_src python   
+# matplotlib - the Python graph-drawing library
+import matplotlib.pyplot as plt
+import numpy
+
+# Set the X and Y values (same number of elements in both lists)
+yVals= [0,1,4,9,16,25,36,49,64,81,100,121]
+xVals= [0,1,2,3,4,5,6,7,8,9,10,11]
+
+# Plot the graph line
+plt.plot(xVals,yVals)
+
+# Add some labels
+plt.xlabel('x axis')
+plt.ylabel('y axis')
+plt.title('Graph title goes here')
+
+# Show the finished graph
+plt.show()
+#+end_src 
+
+- One of the great things with Python is its ability to import [[https://xkcd.com/353/][new functionality]] to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
+- Our program starts by importing a graph-drawing library. This contains extra functions that Python doesn't normally have. 
+- We then set the values we want to assign to the X and Y axes. 
+    - I've plotted a little bit of the y = x^2 graph, from x=0 to 11. 
+- We get Python to plot the actual graph
+- And we then add labels to the X and Y axis.
+- Finally, we ask Python to show the graph. 
+- *Try it:* Change some of the values, and plot a different line. 
+** Learn It
 :PROPERTIES:
-:HTML_CONTAINER_CLASS: research
+:HTML_CONTAINER_CLASS: learn
 :END:
-- Big data on [[https://en.wikipedia.org/wiki/Big_data][Wikipedia]]
-- LinkedIn article on [[https://www.linkedin.com/pulse/20130827231108-64875646-big-data-the-mega-trend-that-will-impact-all-our-lives][big data]], featuring examples
-- The Guardian: [[http://www.theguardian.com/technology/big-data][big data news stories]]
-- Real-world examples of [[https://econsultancy.com/blog/63594-10-actual-uses-of-big-data/][big data in action]]
-- [[http://www.newstatesman.com/sci-tech/2015/02/we-give-doors-and-toasters-sentience-we-should-decide-what-were-comfortable-first][New Statesman]] article about concerns surrounding  [[https://en.wikipedia.org/wiki/Internet_of_Things][Internet of Things]] and big data
-- UK parliament enquiry - [[http://www.parliament.uk/business/committees/committees-a-z/commons-select/science-and-technology-committee/inquiries/parliament-2015/big-data/][The Big Data Dilemma]] (27/7/15 to 3/9/15)
+- As part of a drive to be more transparent, the UK Government have released a little over 25000 raw data sets for anyone to access. You can browse them [[http://data.gov.uk/data/search][here]].
+- We'll look at some climate data from the met office (the UK weather agency). The latest versions of their datasets can  be freely downloaded from their site [[http://www.metoffice.gov.uk/climate/uk/summaries/datasets][here]].
+- Scientists believe that in general, the World is getting hotter over time due to the burning of fossil fuels. We'll write a short program to graph over a century's worth of data to see if we can spot a pattern.
+
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+- Download the *UK mean temp* (make sure you get it *year ordered*, which is about half-way down the page) dataset to your computer, and open it in a text editor (eg. Notepad).
+- The first 7 lines of the file contain a short introduction to what's in the file. This isn't much help to us. Delete all these lines, so that the very first thing in your text file is 'Year, JAN, FEB, etc'.
+- Save this file in the same folder you've been saving your code into, and ensure that the filename is *uk.txt*.
+- Next, create (and save) a new Python program with this code:
+
+#+begin_src python   
+# Python graph-drawing with matplotlib.
+import matplotlib.pyplot as plt
+import csv
+
+# Open the data file, and read the data in.
+with open("UK.txt", 'r') as csvfile:
+    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
+    data=list(reader)
+    # Remove the first row, which has the column headers in it.
+    data.pop(0)
+
+# Pick up the individual rows, one by one.
+for eachYear in range (0,len(data)):
+    thisYr=data[eachYear]   # thisYear is a single year's data.
+    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
+
+    # Trim off the year (we don't want to plot that)
+    thisYr.pop(0)
+    # Trim off the last 5 records (these are Season averages)
+    del thisYr[len(thisYr)-5:len(thisYr)]
+
+    # Plot the line for that year.
+    plt.plot(thisYr,label=whichYr)
+    
+# then add some labels
+plt.ylabel('Mean temperature')
+plt.xlabel('Month')
+plt.title('UK Mean Temperatures')
+# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
+
+# and show the finished graph
+plt.show()
+#+end_src 
+
+- We've got over a century of weather data here. Each line represents a year's average temperature. We've commented out the 'legend=' line, as if we didn't (try un-commenting it), it obscures the graph. 
+- On the x-axis, January is month 0, February is 1, December is 11. 
+- Ignoring that you can't tell which year is which (at the moment), could you make any conclusions about what the graph shows? 
+- An example could be: /The hottest mean temperature ever was in July, and was about 17.5 degrees/. 
+
+** Remix It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: try
+:END:
+- We set out to look at climate change. 
+- As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
+- Find the line (towards the top) that says:
+#+begin_src python   
+for eachYear in range (0,len(data)):
+#+end_src 
+- Change it to:
+#+begin_src python   
+for eachYear in range (0,len(data),30):
+#+end_src 
+- The numbers in brackets after range are doing the following:
+  - the 0 is saying to start with the first year's (1910) data
+  - the *len(data)* command gets the length of the dataset (over 100 years worth), and tells the loop to repeat until it has looked at this many records,
+  - The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
+- This'll produce only 4 plotted lines, making the graph easier on the eye and also giving room to show the labels that tell us which line is which (the legend). 
+- To enable labels, remove the hash symbol from the start of the line that says:
+#+begin_src python   
+# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
+#+end_src 
+- Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- Both Governments, businesses and private citizens are showing an increasing interest in big data. Write a report explaining big data for a non-technical adult audience. You should include:
-    - What is meant by the term, 'big data'?
-    - Describe some examples of big data projects
-    - What good can come from big data?
-    - Why do some people dislike the idea of gathering and using big data?
-    - How do you feel about the use of big data?
-- Cite sources for any web pages you have used in your research. You must reference at least two different sources in your research. Some are given above, but there are plenty of other sources online. 
+- Produce a short report on the UK climate, using graphs to support your arguments.
 
-- *Silver:* A short report, giving brief answers to each of the questions. 
-- *Gold:* A more detailed report showing good levels of research, and offering analysis and comment.
-- *Platinum:* A comprehensive, well-written report giving examples, citing multiple sources and drawing well-reasoned conclusions based on evidence gathered through research. 
+
+- *Silver* - In addition to one for the whole UK, plot at least one other graph, and comment on it.
+- *Gold* - Produce multiple graphs and make appropriate conclusions.
+- *Platinum* - Plot data from multiple sources on the same graph, and comment on them. You could compare Scotland and the South of England over the past 2 years, for instance.

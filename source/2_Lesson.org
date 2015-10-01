@@ -20,6 +20,7 @@
       <li><a href="2_Lesson.html">Week2</a></li>
       <li><a href="3_Lesson.html">Week3</a></li>
       <li><a href="4_Lesson.html">Week4</a></li>
+      <li><a href="5_Lesson.html">Week5</a></li>
     </ul>
   </div>
 #+END_HTML
@@ -87,7 +88,7 @@
 :HTML_CONTAINER_CLASS: save
 :END:
 
-* Handling data
+* Python
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: activity
 :END:
@@ -96,48 +97,13 @@
 :HTML_CONTAINER_CLASS: learn
 :END:
 - Last lesson, we looked at the scale of data used globally, and thought about how collecting and analysing lots of records can help organisations and governments to improve.
-- In this lesson, we'll try handling a large data set for ourselves.
-- Black-hat hackers often wish to log in to others' IT systems by trying to guess their password. 
-- One approach that can be taken is to 'brute-force' attack the system, by having a computer program attempt every possible password combination until it guesses correctly. It might try these first...
-    - a
-    - b
-    - c
-    - ...z
-    - aa
-    - ab
-    - ac
-    - ...az
-    - ba
-    - bb
-    - etc...
-- By doing this, eventually any password can be eventually 'cracked'. 
-- As you can imagine, if the password contains capital letters, then it'll take twice as long to run through all single-character passwords.
-- If you include numbers, that's another 10 combinations on each sweep through.
-- If you include puncutation marks (e.g. %, ^, &) then this will take even longer.
-- This can be rather slow.
 
-
-- Imagine you had a password-protected PDF file with your homework in it, and had forgotten the password to open it.
-- Let's imagine that its rather important you access the file, and so have written a password cracking program to repeatedly try to open the document with a brute-force attack.
-- [[http://calc.opensecurityresearch.com][Click here]] to see a password cracking calculator. 
-    - Set the password length to 6 characters (e.g. 'lockit' or 'system')
-    - Set the keys per second to 'PDF - 22014K/s', for a PDF file.
-    - Set the characterset to 'mixalpha'
-    - Click 'Get time'
-- On average, how long will it take to find the password if we used a 7 character password? 
-- How about 8 characters? Does the extra character make much difference?
-- What if we used mixed alphabet and numeric characters for an 8 character password?
 ** Try It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
 - Most people tend to use words for passwords, rather than random characters. 
-- A second form of password attack is using a dictionary file, which contains common words. 
-- Dictionary files are readily (and freely) available on the web. Click [[./img/passwords.txt][here]] to download a relatively small password file, containing 1.1 million passwords. 
-- Getting a human to work through the list, typing each password until they get the correct one could take some time.
-- Getting a computer to run through the list won't take quite so long.
-- We'll write a short (white-hat) program to allow users to test their passwords to see if they're secure or not.
-- We'll start simple, and add complexity slowly.
+
 ** Try It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: quote
