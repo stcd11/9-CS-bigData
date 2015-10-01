@@ -96,7 +96,10 @@
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- The World is constantly generating new data at an astonishing rate. 
+- The World is constantly generating new data at an astonishing rate.
+#+BEGIN_HTML
+<iframe width="560" height="315" src="https://www.youtube.com/embed/449twsMTrJI" frameborder="0" allowfullscreen></iframe>
+#+END_HTML
 - According to [[http://www.ibm.com][IBM]], every day in 2012, 2.5EB ([[https://en.wikipedia.org/wiki/Exabyte][Exabytes]]) of new data were generated. In this project, we'll look at where this data is coming from, see how it can be user, identify your contribution and try analysing some large data sets for ourselves. 
 - Let's start by thinking about how much data we're talking about.
 - All data is stored as 1s and 0s. A single 1 or 0 is called a 'bit'
@@ -125,25 +128,39 @@
 - Each of us has a digital footprint, which we leave every day. The data we generate can be used as part of big data analysis projects to provide information to the Government to help assign NHS funding, or to help supermarkets decide how much milk to order. 
 - Consider the NHS. Across the country, millions of people are treated every year. Each time a patient is treated, an electronic record of the problem, diagnosis and treatment it stored. 
 - As the Government has all that data, they can quickly see what diseases are responsible for the most deaths in Britain, and fund research on improving treatments. It is also possible to see which hospitals are curing more people than others, and take steps to tackle underperformance. Those hospitals who treat more patients can be given more funding and so on.
-- Tech/Lifestyle website, '[[http://mashable.com][Mashable]]' has an excellent [[http://mashable.com/2013/07/17/big-data-projects/][article]] on big data, featuring examples like:
-- [[http://project.wnyc.org/transit-time][WNYC]] (A New York radio station) used big data to help commuters anticipate travel times...
-#+BEGIN_HTML
-<iframe frameborder="0" scrolling ="no" src="http://project.wnyc.org/transit-time/index.html#40.72280,-73.95464,12,825" width="100%" height="785" ></iframe>
-#+END_HTML
+- Tech/Lifestyle website, Mashable has an excellent [[http://mashable.com/2013/07/17/big-data-projects/][article]] on big data, featuring examples like:
+- [[http://project.wnyc.org/transit-time][WNYC]] (A New York radio station) used big data to help commuters anticipate travel times 
 - Twitter engineers used geolocation data from every tweet in several major cities to build a [[http://twitter.github.io/interactive/andes/#][contour map of the region]]. The highest points indicate areas where more tweeting takes place. 
 - [[http://patient.info/local-map?url%3Dhealth%252Fhay-fever-leaflet&dateRange%3D28&tab%3Dseasonal][Patient.info]] collates search data from their site to show a heat-map of the UK based on web searches.
+** Case Study
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: document
+:END:
+- A good example of big data in everyday life is attendance in school.
+- At a *class* level, a form tutor could use attendance data to identify students who are consistently late.
+- At a *year group* level, a head of year could use registration data to see which tutor groups have the best attendance.
+- At a *whole-school* level, a headmaster could use this data to monitor the whole schools' attendance.
+- At a *county-level*, local authorities can use this data to identify any schools where attendance is an issue.
+- At a *national level*, the government can use this data to ensure attendance in schools is consistent around the country.
+- At a *global level*, countries can compare their students attence with those from other countries around the world.
+ 
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- *Task 1:* Calculate how many pictures of the kitten from the top of the page could be stored on a normal 500GB hard disk. Show your working.
-
-- *Task 2:* Write a short report called, 'My contribution to Big Data'. Ensure your work is spell-checked and uses good grammar throughout!
-- Starting with when you wake up on a weekday morning, write about every digital interaction you have (some are more subtle than others). For each, try to identify how this could be useful to someone working on big data.
-- For example, as your bus drives into School, traffic cameras by the side of the road will monitor the number of vehicles on the road, and their average speed. This data is collected and used by traffic services (as seen on Google maps, Sat-Nav systems, radio station reports, AA traffic...) to alert motorists to any potential problems so they can avoid them. Over the long-term, the Government agency responsible for the UK road network (called the Highways Agency) will use this data from all over the UK to decide where roads need to be made larger and identify where accidents commonly occur (to reduce speed limits or install speed cameras). 
-- You could also consider: What services do you use on your 'phone? What if you use a supermarket? What happens in tutor time? The Chill? The library? Do you use a service like NetFlix or Amazon Prime? What about Instagram? What if you had a doctor/dentist appointment? 
+- *Task:* Write a short report called, 'My contribution to Big Data'. Ensure your work is spell-checked and uses good grammar throughout!
+- Your report should include the different ways that you generate data on a day-to-day basis. For as many of these as you can, try to consider any big data applications of this information. 
+- If you use Netflix, you might have noticed when you finish watching a film, Netflix recommends others you might like. Have you considered where this recommendation comes from?
+- You could also consider: What services do you use on your 'phone? What if you use a supermarket? What happens in tutor time? The Chill? The library? Do you use Instagram? What if you had a doctor/dentist appointment? 
 
 
 - *Silver:* A brief report, outlining 3 different pieces of collected data with some evidence of big-data applications identified.
 - *Gold:* A more detailed report, outlining practical ways the data could be used as part of a big data analysis. 
 - *Platinum:* A comprehensive report, outlining numerous interactions and the ways in which the data could be used by various parties. 
+
+** Research It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: research
+:END:
+
+- For extended reading, please read [[http://what-if.xkcd.com/63/][this article]] from xkcd.com.

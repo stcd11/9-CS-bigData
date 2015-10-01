@@ -200,18 +200,18 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #268bd2;">passwordList</span>=[<span style="color: #2aa198;">'password'</span>,<span style="color: #2aa198;">'123456'</span>,<span style="color: #2aa198;">'batman'</span>]
+<pre class="src src-python">passwordList=['password','123456','batman']
 
-<span style="color: #268bd2;">yourPassword</span>=<span style="color: #657b83; font-weight: bold;">input</span>(<span style="color: #2aa198;">"Please enter a password: "</span>)
-<span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">False</span>
+yourPassword=input("Please enter a password: ")
+foundPass=False
 
-<span style="color: #859900; font-weight: bold;">for</span> tryPass <span style="color: #859900; font-weight: bold;">in</span> passwordList:
-    <span style="color: #859900; font-weight: bold;">if</span> yourPassword==tryPass:
-        <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Your password could be hacked."</span>)
-        <span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">True</span>
+for tryPass in passwordList:
+    if yourPassword==tryPass:
+	print("Your password could be hacked.")
+	foundPass=True
 
-<span style="color: #859900; font-weight: bold;">if</span> foundPass==<span style="color: #268bd2; font-weight: bold;">False</span>:
-    <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"That password isn't in my list."</span>)
+if foundPass==False:
+    print("That password isn't in my list.")
 </pre>
 </div>
 
@@ -228,28 +228,28 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Loading passwords... Please wait..."</span>)
-<span style="color: #268bd2;">theFile</span> = <span style="color: #657b83; font-weight: bold;">open</span>(<span style="color: #2aa198;">'passwords.txt'</span>, <span style="color: #2aa198;">'r'</span>)
-<span style="color: #268bd2;">passwordList</span>=[]
+<pre class="src src-python">print("Loading passwords... Please wait...")
+theFile = open('passwords.txt', 'r')
+passwordList=[]
 
-<span style="color: #859900; font-weight: bold;">for</span> eachLine <span style="color: #859900; font-weight: bold;">in</span> theFile:
-    <span style="color: #859900; font-weight: bold;">for</span> eachWord <span style="color: #859900; font-weight: bold;">in</span> eachLine.split():
-        passwordList.append(eachWord)
+for eachLine in theFile:
+    for eachWord in eachLine.split():
+	passwordList.append(eachWord)
 
 theFile.close()
 
-<span style="color: #268bd2;">yourPassword</span>=<span style="color: #657b83; font-weight: bold;">input</span>(<span style="color: #2aa198;">"Please enter a password: "</span>)
-<span style="color: #268bd2;">passwordPosition</span>=0
-<span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">False</span>
+yourPassword=input("Please enter a password: ")
+passwordPosition=0
+foundPass=False
 
-<span style="color: #859900; font-weight: bold;">for</span> tryPass <span style="color: #859900; font-weight: bold;">in</span> passwordList:
-    <span style="color: #268bd2;">passwordPosition</span>+=1
-    <span style="color: #859900; font-weight: bold;">if</span> yourPassword==tryPass:
-        <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"Found it in record "</span> + <span style="color: #657b83; font-weight: bold;">str</span>(passwordPosition))
-        <span style="color: #268bd2;">foundPass</span>=<span style="color: #268bd2; font-weight: bold;">True</span>
+for tryPass in passwordList:
+    passwordPosition+=1
+    if yourPassword==tryPass:
+	print("Found it in record " + str(passwordPosition))
+	foundPass=True
 
-<span style="color: #859900; font-weight: bold;">if</span> foundPass==<span style="color: #268bd2; font-weight: bold;">False</span>:
-    <span style="color: #859900; font-weight: bold;">print</span>(<span style="color: #2aa198;">"That password is not in the dictionary."</span>)
+if foundPass==False:
+    print("That password is not in the dictionary.")
 </pre>
 </div>
 
@@ -300,7 +300,7 @@ theFile.close()
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="validation"></p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

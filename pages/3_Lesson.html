@@ -93,23 +93,23 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">matplotlib - the Python graph-drawing library</span>
-<span style="color: #859900; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold;">as</span> plt
-<span style="color: #859900; font-weight: bold;">import</span> numpy
+<pre class="src src-python"># matplotlib - the Python graph-drawing library
+import matplotlib.pyplot as plt
+import numpy
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Set the X and Y values (same number of elements in both lists)</span>
-<span style="color: #268bd2;">yVals</span>= [0,1,4,9,16,25,36,49,64,81,100,121]
-<span style="color: #268bd2;">xVals</span>= [0,1,2,3,4,5,6,7,8,9,10,11]
+# Set the X and Y values (same number of elements in both lists)
+yVals= [0,1,4,9,16,25,36,49,64,81,100,121]
+xVals= [0,1,2,3,4,5,6,7,8,9,10,11]
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Plot the graph line</span>
+# Plot the graph line
 plt.plot(xVals,yVals)
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Add some labels</span>
-plt.xlabel(<span style="color: #2aa198;">'x axis'</span>)
-plt.ylabel(<span style="color: #2aa198;">'y axis'</span>)
-plt.title(<span style="color: #2aa198;">'Graph title goes here'</span>)
+# Add some labels
+plt.xlabel('x axis')
+plt.ylabel('y axis')
+plt.title('Graph title goes here')
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Show the finished graph</span>
+# Show the finished graph
 plt.show()
 </pre>
 </div>
@@ -166,37 +166,37 @@ plt.show()
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Python graph-drawing with matplotlib.</span>
-<span style="color: #859900; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold;">as</span> plt
-<span style="color: #859900; font-weight: bold;">import</span> csv
+<pre class="src src-python"># Python graph-drawing with matplotlib.
+import matplotlib.pyplot as plt
+import csv
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Open the data file, and read the data in.</span>
-<span style="color: #859900; font-weight: bold;">with</span> <span style="color: #657b83; font-weight: bold;">open</span>(<span style="color: #2aa198;">"UK.txt"</span>, <span style="color: #2aa198;">'r'</span>) <span style="color: #859900; font-weight: bold;">as</span> csvfile:
-    <span style="color: #268bd2;">reader</span>=csv.reader(csvfile,delimiter=<span style="color: #2aa198;">' '</span>,skipinitialspace=<span style="color: #268bd2; font-weight: bold;">True</span>)
-    <span style="color: #268bd2;">data</span>=<span style="color: #657b83; font-weight: bold;">list</span>(reader)
-    <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Remove the first row, which has the column headers in it.</span>
+# Open the data file, and read the data in.
+with open("UK.txt", 'r') as csvfile:
+    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
+    data=list(reader)
+    # Remove the first row, which has the column headers in it.
     data.pop(0)
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Pick up the individual rows, one by one.</span>
-<span style="color: #859900; font-weight: bold;">for</span> eachYear <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span> (0,<span style="color: #657b83; font-weight: bold;">len</span>(data)):
-    <span style="color: #268bd2;">thisYr</span>=data[eachYear]   <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">thisYear is a single year's data.</span>
-    <span style="color: #268bd2;">whichYr</span>=thisYr[0] <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">whichYr is the year we're looking at (e.g. 1960)</span>
+# Pick up the individual rows, one by one.
+for eachYear in range (0,len(data)):
+    thisYr=data[eachYear]   # thisYear is a single year's data.
+    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
 
-    <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Trim off the year (we don't want to plot that)</span>
+    # Trim off the year (we don't want to plot that)
     thisYr.pop(0)
-    <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Trim off the last 5 records (these are Season averages)</span>
-    <span style="color: #859900; font-weight: bold;">del</span> thisYr[<span style="color: #657b83; font-weight: bold;">len</span>(thisYr)-5:<span style="color: #657b83; font-weight: bold;">len</span>(thisYr)]
+    # Trim off the last 5 records (these are Season averages)
+    del thisYr[len(thisYr)-5:len(thisYr)]
 
-    <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Plot the line for that year.</span>
+    # Plot the line for that year.
     plt.plot(thisYr,label=whichYr)
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">then add some labels</span>
-plt.ylabel(<span style="color: #2aa198;">'Mean temperature'</span>)
-plt.xlabel(<span style="color: #2aa198;">'Month'</span>)
-plt.title(<span style="color: #2aa198;">'UK Mean Temperatures'</span>)
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')</span>
+# then add some labels
+plt.ylabel('Mean temperature')
+plt.xlabel('Month')
+plt.title('UK Mean Temperatures')
+# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
 
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">and show the finished graph</span>
+# and show the finished graph
 plt.show()
 </pre>
 </div>
@@ -227,7 +227,7 @@ plt.show()
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> eachYear <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span> (0,<span style="color: #657b83; font-weight: bold;">len</span>(data)):
+<pre class="src src-python">for eachYear in range (0,len(data)):
 </pre>
 </div>
 <ul class="org-ul">
@@ -236,7 +236,7 @@ plt.show()
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> eachYear <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span> (0,<span style="color: #657b83; font-weight: bold;">len</span>(data),30):
+<pre class="src src-python">for eachYear in range (0,len(data),30):
 </pre>
 </div>
 <ul class="org-ul">
@@ -257,7 +257,7 @@ plt.show()
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')</span>
+<pre class="src src-python"># legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
 </pre>
 </div>
 <ul class="org-ul">
@@ -288,7 +288,7 @@ plt.show()
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="validation"></p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
