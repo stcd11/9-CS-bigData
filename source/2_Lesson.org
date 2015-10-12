@@ -88,105 +88,121 @@
 :HTML_CONTAINER_CLASS: save
 :END:
 
-* Python
+* Re-introduction to Python
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: activity
 :END:
+** Research It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: research
+:END:
+- Click [[http://amomwithalessonplan.com/knock-knock-jokes-for-kids/][here]] and choose a "joke". Open IDLE and get the computer to output your joke.
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+- Now  add your joke.
+
+- Stuck? 
+- print ("message here")
+[[./img/PythonJoke1.png]]
+
 ** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- Last lesson, we looked at the scale of data used globally, and thought about how collecting and analysing lots of records can help organisations and governments to improve.
+- Using the print statement allows us to get the computer to output or 'talk' to us. What's next?
+- Perfunctory steps...
+- Let's wrap our joke in a function so we can use it again and again.
+- A function is a piece of code that we may want to use again and again.
+- This makes for less code and more efficient testing.
 
-** Try It
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+- Add the below code:
+
+def joke1():
+	your print statements here
+
+joke1() # this will call the joke
+
+- Stuck?
+[[./img/PythonJoke2.png]]
+** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- Most people tend to use words for passwords, rather than random characters. 
-
-** Try It
+- Currently our joke is static, we need to get active and responsive. 
+- We use variables to store data, so let's ask a question.
+** Code It
 :PROPERTIES:
-:HTML_CONTAINER_CLASS: quote
+:HTML_CONTAINER_CLASS: code
 :END:
-- Often, developers want to write an outline of a program before writing it. By writing the code in human-readable English, it becomes easier to articulate the flow of our program, even if we don't know all the command words to actually write it yet.
-- We call this *pseudocode*. A simple dictionary search algorithm could be expressed like this:
-#+begin_example
-1. Make a variable called 'foundPass' and set it to False. We'll change this if your password is found.
-2. Ask user for the password to test. Store as 'yourPassword'
-3. Store some passwords in a list. Let's call it 'passwordList'
-4. For each password in passwordList...
-    4a. If yourPassword is the same as the current passwordList item...
-        4a. i. Print a message, saying we've found your password
-        4a. ii. Set foundPass to True
-5. If foundPass is False, print a message to say the password wasn't found.
-#+end_example
+- Add the code below to add a variable so we can response to the answer.
+[[./img/PythonJoke3.png]]
+** Learn It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: learn
+:END:
+- Now we have an answer; we can respond. The keywords for choice are if / elif / else. There should always be one if and one else. If you need more decisions just add more elif inbetween the if and else. This allows us to make branching programs that are able to interactive with the user. For if and elif statements we need to compare.
+- We can use several symbols to compare answers in different ways - choice making choices?
 
-- Load up IDLE, start a new program (File -> New) and copy the code below into the window:
+- < Less than 
+- > More than
+- == same as
+- != or <> not the same as
 
-#+begin_src python   
-passwordList=['password','123456','batman']
-
-yourPassword=input("Please enter a password: ")
-foundPass=False
-    
-for tryPass in passwordList:
-    if yourPassword==tryPass:
-        print("Your password could be hacked.")
-        foundPass=True
-
-if foundPass==False:
-    print("That password isn't in my list.")
-#+end_src 
-
-- Save the file as 'simplePassword.py' and run the program a few times to see how it works. 
-- This is a start, but three passwords simply isn't enough for a dictionary attack. 
-- Time for an upgrade. Save [[./img/passwords.txt][this file]] to your home drive, ensuring its in the same directory that you save your Python work into. 
-- Make another new file, and add this code to it:
-
-#+begin_src python   
-print("Loading passwords... Please wait...")
-theFile = open('passwords.txt', 'r')
-passwordList=[]
-
-for eachLine in theFile:
-    for eachWord in eachLine.split():
-        passwordList.append(eachWord)
-
-theFile.close()
-
-yourPassword=input("Please enter a password: ")
-passwordPosition=0
-foundPass=False
-
-for tryPass in passwordList:
-    passwordPosition+=1
-    if yourPassword==tryPass:
-        print("Found it in record " + str(passwordPosition))
-        foundPass=True
-
-if foundPass==False:
-    print("That password is not in the dictionary.")
-#+end_src 
-
-
-- Test the program, using some passwords. Try predictable ones (e.g. 123456) and any others you can think of.
-- *Tip:* Avoid typing your own password; another person sitting nearby could see it.
+- For the else statement we do not need a comparator as it is just everything else.
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+- Add the code below so we can response to the answer.
+[[./img/PythonJoke4.png]]
+- Expand it!: Now get your code to call all three functions  based on your response to the first question.
+- Stuck? It should look like this.
+[[./img/PythonJoke5.png]]
+- We want our user to be able to choose several times to 'enjoy' all of our witty jokes.
+- Action Point: Add the following code.
+[[./img/PythonJoke6.png]]
+- Debug Time!
+- What's wrong with the code? (6 to find)
+[[./img/PythonJoke7.png]]
+- Comedy is all about timing. 
+- Add this to your first line import time, datetime.
+- This will bring a whole series of commands involving time and date.
+- Now add the extra code:
+[[./img/PythonJoke8.png]]
+- Yeah... much funnier...
+- Accessing more comedy.
+- A text file has been added with some of the best jokes...
+- I want to import them into Python and then choose a random joke each time.
+- Start a new file - CTRL + N.
+- Save as 'accessing the comedy.py'
+- Open and save the following text file.
+- [[./img/jokes.txt][Click here to open the jokes text file.]]
+** Code It
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: code
+:END:
+- Use the code below to get python to open and read the file.
+[[./img/PythonJoke9.jpg]]
+- Now let's add a search facility.
+[[./img/PythonJoke10.jpg]]
 ** Badge It - Silver
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- This program uses a lot of the ideas from the previous version of the program, but has a few new lines. If you look at the code and think about the variable names, you should be able to come up with an explanation of how it works. 
-- Write out pseudocode to explain how the program works.
+- Upload a screenshot/screen clip of your code with 3 jokes in functions,input variable and conditionals.
 ** Badge It - Gold
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- Make a text file with this Monday's lessons in it; one on each line.
-- Write another with Tuesday's lessons in it. Again, put one on each line.
-- Write a program which allows you to enter a lesson. 
-- The program should tell you if the lesson is on Monday, Tuesday or neither. 
+- Add screenshots of debugging and use of libraries in our code. 
 ** Badge It - Platinum
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
 :END:
-- Improve your program by having it tell you which lesson period AND which day the lesson is on.
+- Add a screenshot showing you using the code provided to access and use a text file using Python's ability to read and search.
