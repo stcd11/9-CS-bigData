@@ -107,12 +107,15 @@
 - print ("message here")
 [[./img/PythonJoke1.png]]
 
+* Perfunctory Steps
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END:
 ** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
 :END:
-- Using the print statement allows us to get the computer to output or 'talk' to us. What's next?
-- Perfunctory steps...
+- [[http://dictionary.reference.com/browse/perfunctory][Perfunctory]](click link for definition)
 - Let's wrap our joke in a function so we can use it again and again.
 - A function is a piece of code that we may want to use again and again.
 - This makes for less code and more efficient testing.
@@ -130,6 +133,12 @@ joke1() # this will call the joke
 
 - Stuck?
 [[./img/PythonJoke2.png]]
+- Add two more 'jokes' to your program as functions *joke2* and *joke3*
+
+* Choices
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END:
 ** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
@@ -164,19 +173,30 @@ joke1() # this will call the joke
 - Expand it!: Now get your code to call all three functions  based on your response to the first question.
 - Stuck? It should look like this.
 [[./img/PythonJoke5.png]]
+
+* Let's go round again
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END:
 - We want our user to be able to choose several times to 'enjoy' all of our witty jokes.
 - Action Point: Add the following code.
 [[./img/PythonJoke6.png]]
 - Debug Time!
 - What's wrong with the code? (6 to find)
 [[./img/PythonJoke7.png]]
-- Comedy is all about timing. 
+* Comedy is all about timing
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END: 
 - Add this to your first line import time, datetime.
 - This will bring a whole series of commands involving time and date.
 - Now add the extra code:
 [[./img/PythonJoke8.png]]
 - Yeah... much funnier...
-- Accessing more comedy.
+* Accessing more comedy
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: activity
+:END: 
 - A text file has been added with some of the best jokes...
 - I want to import them into Python and then choose a random joke each time.
 - Start a new file - CTRL + N.
