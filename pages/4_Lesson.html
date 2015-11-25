@@ -86,53 +86,53 @@ for the JavaScript code in this tag.
 </li>
 <li>In this lesson, we're going to investigate climate change in the UK since about 1910, and you'll be able to draw your own conclusions about global warming.
 </li>
-<li>Before we get too carried away, we'll start by drawing a simple line graph and then build up to something more elaborate.
+<li>Before we get too carried away, we'll start by drawing a simple scatter graph and then build up to something more elaborate.
 </li>
-<li>Load up IDLE, start a new program (File -&gt; New) and copy the code below into the window:
+<li>Load up Excel 2013 and create a new blank workbook.
+</li>
+<li>We then set the values we want to assign to the X and Y axes.
+</li>
+<li>In the cell A1 place "X Values" and then in the cells between A2 and A13 place the following values 0,1,2,3,4,5,6,7,8,9,10,11.
 </li>
 </ul>
 
-<div class="org-src-container">
-
-<pre class="src src-python"># matplotlib - the Python graph-drawing library
-import matplotlib.pyplot as plt
-import numpy
-
-# Set the X and Y values (same number of elements in both lists)
-yVals= [0,1,4,9,16,25,36,49,64,81,100,121]
-xVals= [0,1,2,3,4,5,6,7,8,9,10,11]
-
-# Plot the graph line
-plt.plot(xVals,yVals)
-
-# Add some labels
-plt.xlabel('x axis')
-plt.ylabel('y axis')
-plt.title('Graph title goes here')
-
-# Show the finished graph
-plt.show()
-</pre>
+<div class="figure">
+<p><img src="./img/1.jpg" alt="1.jpg" />
+</p>
 </div>
-
 <ul class="org-ul">
-<li>One of the great things with Python is its ability to import <a href="https://xkcd.com/353/">new functionality</a> to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
+<li>In the cell B1 place "Y Values" and then in the cells between B2 and B13 place the following formula =power(A2,2)
 </li>
-<li>Our program starts by importing a graph-drawing library. This contains extra functions that Python doesn't normally have. 
-</li>
-<li>We then set the values we want to assign to the X and Y axes. 
-<ul class="org-ul">
-<li>I've plotted a little bit of the y = x<sup>2</sup> graph, from x=0 to 11. 
+<li>This will help us draw a y = x2 graph, from x=0 to 11.
 </li>
 </ul>
+
+<div class="figure">
+<p><img src="./img/2.jpg" alt="2.jpg" />
+</p>
+</div>
+<ul class="org-ul">
+<li>We then select all cells from A1:B13 and click on the INSERT tab and choose from the CHARTS toolbar the Scatter chart.
 </li>
-<li>We get Python to plot the actual graph
+</ul>
+
+<div class="figure">
+<p><img src="./img/3.jpg" alt="3.jpg" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Change the title to GRAPH-ics, add labels to the X and Y axis and right click on the blue points to add the data labels.
 </li>
-<li>And we then add labels to the X and Y axis.
+</ul>
+
+<div class="figure">
+<p><img src="./img/4.jpg" alt="4.jpg" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Finally, we can move our chart to a new sheet by right clicking on it and choosing MOVE CHART then selecting NEW SHEET and naming it UK WEATHER HISTORY.
 </li>
-<li>Finally, we ask Python to show the graph. 
-</li>
-<li><b>Try it:</b> Change some of the values, and plot a different line. 
+<li><b>Change some of the values, and plot a different scatter pattern.</b>
 </li>
 </ul>
 </div>
@@ -161,115 +161,23 @@ plt.show()
 </li>
 <li>Save this file in the same folder you've been saving your code into, and ensure that the filename is <b>uk.txt</b>.
 </li>
-<li>Next, create (and save) a new Python program with this code:
+<li>Next, create a new sheet and name it UK Mean temp. Click on the DATA tab and from the <b>GET EXTERNAL DATA</b> toolbar choose <b>FROM TEXT</b> and look for your uk.txt file. 
 </li>
-</ul>
-
-<div class="org-src-container">
-
-<pre class="src src-python"># Python graph-drawing with matplotlib.
-import matplotlib.pyplot as plt
-import csv
-
-# Open the data file, and read the data in.
-with open("UK.txt", 'r') as csvfile:
-    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
-    data=list(reader)
-    # Remove the first row, which has the column headers in it.
-    data.pop(0)
-
-# Pick up the individual rows, one by one.
-for eachYear in range (0,len(data)):
-    thisYr=data[eachYear]   # thisYear is a single year's data.
-    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
-
-    # Trim off the year (we don't want to plot that)
-    thisYr.pop(0)
-    # Trim off the last 5 records (these are Season averages)
-    del thisYr[len(thisYr)-5:len(thisYr)]
-
-    # Plot the line for that year.
-    plt.plot(thisYr,label=whichYr)
-
-# then add some labels
-plt.ylabel('Mean temperature')
-plt.xlabel('Month')
-plt.title('UK Mean Temperatures')
-# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-
-# and show the finished graph
-plt.show()
-</pre>
-</div>
-
-<ul class="org-ul">
-<li>We've got over a century of weather data here. Each line represents a year's average temperature. We've commented out the 'legend=' line, as if we didn't (try un-commenting it), it obscures the graph. 
+<li>The <b>TEXT IMPORT WIZARD</b> should pop up and you should click the <b>NEXT</b> button, followed by another <b>NEXT</b> button, then the <b>FINISH</b> button and finally click on the <b>OK</b> button.
 </li>
-<li>On the x-axis, January is month 0, February is 1, December is 11. 
+<li>We've got over a century of weather data here. Each line represents a year's average temperature.
 </li>
-<li>Ignoring that you can't tell which year is which (at the moment), could you make any conclusions about what the graph shows? 
+<li>In the S and T columns, by using the MAX and MIN functions, you can easily verifiy the hottest and coldest months for each year (be sure not to include the WIN, SPR SUM, AUT and ANN values from columns N to R).
 </li>
-<li>An example could be: <i>The hottest mean temperature ever was in July, and was about 17.5 degrees</i>. 
+<li>In rows 108 and 109, by using the MAX and MIN functions, you can easily verify the the hottest and coldest temperatures per month over the 105 year period. 
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3 try">
-<h3 id="sec-1-4">Remix It</h3>
+<div id="outline-container-sec-1-4" class="outline-3 badge">
+<h3 id="sec-1-4">Badge It</h3>
 <div class="outline-text-3" id="text-1-4">
-<ul class="org-ul">
-<li>We set out to look at climate change. 
-</li>
-<li>As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
-</li>
-<li>Find the line (towards the top) that says:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python">for eachYear in range (0,len(data)):
-</pre>
-</div>
-<ul class="org-ul">
-<li>Change it to:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python">for eachYear in range (0,len(data),30):
-</pre>
-</div>
-<ul class="org-ul">
-<li>The numbers in brackets after range are doing the following:
-<ul class="org-ul">
-<li>the 0 is saying to start with the first year's (1910) data
-</li>
-<li>the <b>len(data)</b> command gets the length of the dataset (over 100 years worth), and tells the loop to repeat until it has looked at this many records,
-</li>
-<li>The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
-</li>
-</ul>
-</li>
-<li>This'll produce only 4 plotted lines, making the graph easier on the eye and also giving room to show the labels that tell us which line is which (the legend). 
-</li>
-<li>To enable labels, remove the hash symbol from the start of the line that says:
-</li>
-</ul>
-<div class="org-src-container">
-
-<pre class="src src-python"># legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-</pre>
-</div>
-<ul class="org-ul">
-<li>Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-5" class="outline-3 badge">
-<h3 id="sec-1-5">Badge It</h3>
-<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Produce a short report on the UK climate, using graphs to support your arguments.
 </li>

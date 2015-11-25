@@ -98,38 +98,20 @@
 :END:
 - Graphs are important when humans need visualisations of a large data set to help them look for patterns and meaning. 
 - In this lesson, we're going to investigate climate change in the UK since about 1910, and you'll be able to draw your own conclusions about global warming.
-- Before we get too carried away, we'll start by drawing a simple line graph and then build up to something more elaborate.
-- Load up IDLE, start a new program (File -> New) and copy the code below into the window:
-
-#+begin_src python   
-# matplotlib - the Python graph-drawing library
-import matplotlib.pyplot as plt
-import numpy
-
-# Set the X and Y values (same number of elements in both lists)
-yVals= [0,1,4,9,16,25,36,49,64,81,100,121]
-xVals= [0,1,2,3,4,5,6,7,8,9,10,11]
-
-# Plot the graph line
-plt.plot(xVals,yVals)
-
-# Add some labels
-plt.xlabel('x axis')
-plt.ylabel('y axis')
-plt.title('Graph title goes here')
-
-# Show the finished graph
-plt.show()
-#+end_src 
-
-- One of the great things with Python is its ability to import [[https://xkcd.com/353/][new functionality]] to give it new abilities, like drawing graphics, playing sound, drawing graphs, performing complex mathematics and so on. 
-- Our program starts by importing a graph-drawing library. This contains extra functions that Python doesn't normally have. 
-- We then set the values we want to assign to the X and Y axes. 
-    - I've plotted a little bit of the y = x^2 graph, from x=0 to 11. 
-- We get Python to plot the actual graph
-- And we then add labels to the X and Y axis.
-- Finally, we ask Python to show the graph. 
-- *Try it:* Change some of the values, and plot a different line. 
+- Before we get too carried away, we'll start by drawing a simple scatter graph and then build up to something more elaborate.
+- Load up Excel 2013 and create a new blank workbook.
+- We then set the values we want to assign to the X and Y axes.
+- In the cell A1 place "X Values" and then in the cells between A2 and A13 place the following values 0,1,2,3,4,5,6,7,8,9,10,11.
+[[./img/1.jpg]]
+- In the cell B1 place "Y Values" and then in the cells between B2 and B13 place the following formula =power(A2,2)
+- This will help us draw a y = x2 graph, from x=0 to 11.
+[[./img/2.jpg]]
+- We then select all cells from A1:B13 and click on the INSERT tab and choose from the CHARTS toolbar the Scatter chart.
+[[./img/3.jpg]]
+- Change the title to GRAPH-ics, add labels to the X and Y axis and right click on the blue points to add the data labels.
+[[./img/4.jpg]]
+- Finally, we can move our chart to a new sheet by right clicking on it and choosing MOVE CHART then selecting NEW SHEET and naming it UK WEATHER HISTORY.
+- *Change some of the values, and plot a different scatter pattern.*
 ** Learn It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: learn
@@ -145,72 +127,12 @@ plt.show()
 - Download the *UK mean temp* (make sure you get it *year ordered*, which is about half-way down the page) dataset to your computer, and open it in a text editor (eg. Notepad).
 - The first 7 lines of the file contain a short introduction to what's in the file. This isn't much help to us. Delete all these lines, so that the very first thing in your text file is 'Year, JAN, FEB, etc'.
 - Save this file in the same folder you've been saving your code into, and ensure that the filename is *uk.txt*.
-- Next, create (and save) a new Python program with this code:
+- Next, create a new sheet and name it UK Mean temp. Click on the DATA tab and from the *GET EXTERNAL DATA* toolbar choose *FROM TEXT* and look for your uk.txt file. 
+- The *TEXT IMPORT WIZARD* should pop up and you should click the *NEXT* button, followed by another *NEXT* button, then the *FINISH* button and finally click on the *OK* button.
+- We've got over a century of weather data here. Each line represents a year's average temperature.
+- In the S and T columns, by using the MAX and MIN functions, you can easily verifiy the hottest and coldest months for each year (be sure not to include the WIN, SPR SUM, AUT and ANN values from columns N to R).
+- In rows 108 and 109, by using the MAX and MIN functions, you can easily verify the the hottest and coldest temperatures per month over the 105 year period. 
 
-#+begin_src python   
-# Python graph-drawing with matplotlib.
-import matplotlib.pyplot as plt
-import csv
-
-# Open the data file, and read the data in.
-with open("UK.txt", 'r') as csvfile:
-    reader=csv.reader(csvfile,delimiter=' ',skipinitialspace=True)
-    data=list(reader)
-    # Remove the first row, which has the column headers in it.
-    data.pop(0)
-
-# Pick up the individual rows, one by one.
-for eachYear in range (0,len(data)):
-    thisYr=data[eachYear]   # thisYear is a single year's data.
-    whichYr=thisYr[0] # whichYr is the year we're looking at (e.g. 1960)
-
-    # Trim off the year (we don't want to plot that)
-    thisYr.pop(0)
-    # Trim off the last 5 records (these are Season averages)
-    del thisYr[len(thisYr)-5:len(thisYr)]
-
-    # Plot the line for that year.
-    plt.plot(thisYr,label=whichYr)
-    
-# then add some labels
-plt.ylabel('Mean temperature')
-plt.xlabel('Month')
-plt.title('UK Mean Temperatures')
-# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-
-# and show the finished graph
-plt.show()
-#+end_src 
-
-- We've got over a century of weather data here. Each line represents a year's average temperature. We've commented out the 'legend=' line, as if we didn't (try un-commenting it), it obscures the graph. 
-- On the x-axis, January is month 0, February is 1, December is 11. 
-- Ignoring that you can't tell which year is which (at the moment), could you make any conclusions about what the graph shows? 
-- An example could be: /The hottest mean temperature ever was in July, and was about 17.5 degrees/. 
-
-** Remix It
-:PROPERTIES:
-:HTML_CONTAINER_CLASS: try
-:END:
-- We set out to look at climate change. 
-- As we've got so many data points, its hard to see which line corresponds to which year. We could do with seeing less data.
-- Find the line (towards the top) that says:
-#+begin_src python   
-for eachYear in range (0,len(data)):
-#+end_src 
-- Change it to:
-#+begin_src python   
-for eachYear in range (0,len(data),30):
-#+end_src 
-- The numbers in brackets after range are doing the following:
-  - the 0 is saying to start with the first year's (1910) data
-  - the *len(data)* command gets the length of the dataset (over 100 years worth), and tells the loop to repeat until it has looked at this many records,
-  - The 30 tells Python that rather than reading each and every one of the 100+ records, we want to read every 30th one instead. 
-- This'll produce only 4 plotted lines, making the graph easier on the eye and also giving room to show the labels that tell us which line is which (the legend). 
-- To enable labels, remove the hash symbol from the start of the line that says:
-#+begin_src python   
-# legend = plt.legend(loc='lower center', shadow=True, fontsize='x-small')
-#+end_src 
-- Consider the data. Can you see any evidence to support global warming? Try starting from 1911 or 1912 instead (change that 0 at the start of the range to 1, 2, etc).  
 ** Badge It
 :PROPERTIES:
 :HTML_CONTAINER_CLASS: badge
